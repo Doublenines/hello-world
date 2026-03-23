@@ -35,9 +35,9 @@
     }
 
     .clock {
+      font-family: "Courier New", Courier, monospace;
       font-size: 0.875rem;
       color: #999;
-      font-variant-numeric: tabular-nums;
       letter-spacing: 0.03em;
     }
 
@@ -88,9 +88,116 @@
       font-size: 0.75rem;
       color: #999;
     }
+
+    /* ── Blob ────────────────────────────────────────────── */
+
+    .blob-wrap {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+      background: conic-gradient(
+        from 0deg,
+        #ff2d78,
+        #bf00ff,
+        #00c8ff,
+        #ff2d78
+      );
+      filter: blur(60px);
+      opacity: 0.35;
+      animation:
+        morph   7s  ease-in-out infinite alternate,
+        spin    12s linear        infinite,
+        pulse   4s  ease-in-out  infinite alternate,
+        drift   9s  ease-in-out  infinite alternate;
+      will-change: transform, border-radius, opacity;
+    }
+
+    /* shape shifting */
+    @keyframes morph {
+      0%   { border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%; }
+      25%  { border-radius: 30% 70% 40% 60% / 65% 35% 70% 30%; }
+      50%  { border-radius: 80% 20% 60% 40% / 30% 70% 50% 50%; }
+      75%  { border-radius: 45% 55% 25% 75% / 70% 30% 65% 35%; }
+      100% { border-radius: 55% 45% 70% 30% / 40% 60% 35% 65%; }
+    }
+
+    /* slow rotation */
+    @keyframes spin {
+      to { rotate: 360deg; }
+    }
+
+    /* size breathing — cycles through three distinct sizes */
+    @keyframes pulse {
+      0%   { width: 38vw; height: 38vw; }
+      33%  { width: 70vw; height: 55vw; }
+      66%  { width: 25vw; height: 60vw; }
+      100% { width: 55vw; height: 45vw; }
+    }
+
+    /* wander around the canvas */
+    @keyframes drift {
+      0%   { top: 50%; left: 50%; }
+      25%  { top: 30%; left: 65%; }
+      50%  { top: 60%; left: 35%; }
+      75%  { top: 40%; left: 55%; }
+      100% { top: 55%; left: 45%; }
+    }
+
+    /* second blob — offset phase for more complexity */
+    .blob:nth-child(2) {
+      background: conic-gradient(
+        from 180deg,
+        #00c8ff,
+        #ff2d78,
+        #bf00ff,
+        #00c8ff
+      );
+      opacity: 0.22;
+      filter: blur(80px);
+      animation:
+        morph   9s  ease-in-out infinite alternate-reverse,
+        spin    18s linear        infinite reverse,
+        pulse2  6s  ease-in-out  infinite alternate-reverse,
+        drift2  11s ease-in-out  infinite alternate-reverse;
+    }
+
+    @keyframes pulse2 {
+      0%   { width: 50vw; height: 30vw; }
+      40%  { width: 20vw; height: 65vw; }
+      70%  { width: 75vw; height: 40vw; }
+      100% { width: 35vw; height: 55vw; }
+    }
+
+    @keyframes drift2 {
+      0%   { top: 45%; left: 55%; }
+      30%  { top: 65%; left: 30%; }
+      60%  { top: 25%; left: 60%; }
+      100% { top: 50%; left: 40%; }
+    }
+
+    /* keep page content above blobs */
+    header, main, footer {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 <body>
+
+  <div class="blob-wrap">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
 
   <header>
     <span class="logo">Hello World</span>
