@@ -34,15 +34,11 @@
       letter-spacing: -0.02em;
     }
 
-    nav a {
-      text-decoration: none;
-      color: #111;
+    .clock {
       font-size: 0.875rem;
-      margin-left: 2rem;
-    }
-
-    nav a:hover {
-      opacity: 0.5;
+      color: #999;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.03em;
     }
 
     main {
@@ -98,11 +94,7 @@
 
   <header>
     <span class="logo">Hello World</span>
-    <nav>
-      <a href="#">About</a>
-      <a href="#">Work</a>
-      <a href="#">Contact</a>
-    </nav>
+    <div class="clock" id="clock"></div>
   </header>
 
   <main>
@@ -117,5 +109,16 @@
     &copy; 2026
   </footer>
 
+  <script>
+    const clock = document.getElementById('clock');
+    function tick() {
+      const now = new Date();
+      clock.textContent = now.toLocaleTimeString('en-US', {
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+      });
+    }
+    tick();
+    setInterval(tick, 1000);
+  </script>
 </body>
 </html>
