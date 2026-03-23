@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 2rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-size: 0.875rem;
+      margin-left: 2rem;
+    }
+
+    nav a:hover {
+      opacity: 0.5;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 4rem 2rem;
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .hero a:hover {
+      background: #333;
+    }
+
+    footer {
+      padding: 2rem;
+      border-top: 1px solid #eee;
+      font-size: 0.75rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="logo">Hello World</span>
+    <nav>
+      <a href="#">About</a>
+      <a href="#">Work</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Simple.<br>Clean.<br>Minimal.</h1>
+      <p>A straightforward page with no distractions. Just content, space, and Helvetica.</p>
+      <a href="#">Get started</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026
+  </footer>
+
+</body>
+</html>
